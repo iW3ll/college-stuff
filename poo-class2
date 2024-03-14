@@ -1,0 +1,103 @@
+package javaclass1;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import static java.util.Calendar.HOUR_OF_DAY;
+import java.util.Date;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class nameAndAge {
+
+    public static void main(String[] args) throws ParseException {
+        // Read name variable
+        String name = JOptionPane.showInputDialog("What's your name?: ");
+        
+        // Read age
+        String ageInput = JOptionPane.showInputDialog("How old are you?: ");
+        int age = Integer.parseInt(ageInput);
+        
+        // Print data
+        JOptionPane.showMessageDialog(null, "Name: " + name + "\nAge: " + age);
+        
+       
+        //calender
+        System.out.println("Date/Hour " + c.getTime());
+        System.out.println("Year " + c.get(Calender.year));
+        System.out.println("Month " + (c.get(Calender.Month)+1));
+        System.out.println("Day " + (c.get(Calender.Day_OF_MONTH)));
+        
+        //Hour of day
+        int hour = c.get(HOUR_OF_DAY);
+        if (hour >= 6 && hour < 12){
+            System.out.println("Good Morning");
+        }else if (hour >= 12 && hour < 18){
+            System.out.println("Good Afternoon");
+        }else {
+            System.out.println("Good Evening");
+        }
+        
+        //Format string date to date 
+        
+        Date yearBorn = null;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
+        dateFormat.setLenient(false);
+        int Born = JOptionPane.showInputDialog("Type when you were born: ");
+        System.out.println("Type when you were born dd/MM/YYYY");
+        Scanner s = new Scanner(System.in);
+        String keyboard = s.next();
+        
+        try {
+            Date bornYear = dateFormat.parse(keyboard);
+            System.out.println("Date without formating: " + bornYear );
+            System.out.println("Date with formating: " + dateFormat.format(bornYear));
+          } catch (Exception e) {
+            System.out.println("Invalid date!");  
+        }
+        
+        //age calculator
+        calender today = Calender.getInstance;
+        today.getTime();
+        
+        Calender yearBo = Calender.getInstance();
+        yearBo.setTime(yearBorn);
+        
+        int age = today.get(Calender.YEAR) - yearBo.get(Calender.YEAR);
+        if(today.get(Calender.MONTH) < yearBo.get(Calender.MONTH)) {
+                age --;
+        
+        }
+        System.out.println("Age: "+ age);
+        
+    }
+         
+        
+        /* // Create an instance of the age class
+        age userAge = new age(name, age);
+        userAge.displayMessage();
+    }
+    
+    public static class age {
+        int age;
+        String name;
+        
+        public age(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+        
+        public void displayMessage() {
+            String message;
+            String situation = JOptionPane.showInputDialog("What's the situation: (Active/Inactive)");
+            
+            if (!situation.equalsIgnoreCase("active")) {
+                message = "Inactive User in the system!";
+            } else if (age < 18) {
+                message = "Under age, Need an adult.";
+            } else {
+                message = "Over age";
+            }
+            
+            JOptionPane.showMessageDialog(null, "Name: " + name + "\nAge: " + age + "\nMessage: " + message);
+        }
+    }*/
+}
