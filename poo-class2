@@ -41,7 +41,6 @@ public class nameAndAge {
         Date yearBorn = null;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
         dateFormat.setLenient(false);
-        int Born = JOptionPane.showInputDialog("Type when you were born: ");
         System.out.println("Type when you were born dd/MM/YYYY");
         Scanner s = new Scanner(System.in);
         String keyboard = s.next();
@@ -52,6 +51,30 @@ public class nameAndAge {
             System.out.println("Date with formating: " + dateFormat.format(bornYear));
           } catch (Exception e) {
             System.out.println("Invalid date!");  
+        }
+        
+        //verify year born
+        boolean erro = true;
+        do {
+            System.out.println("Type when you were born: ");
+            String textDate = keyboard.next();
+            String dateText = null;
+            //convert string to date
+            SimpleDateFormat dateFormat = new simpleDate.parse(dateText("dd/MM/YYYY"));
+            dateFormat.setLenient(false);
+            try {
+                p.yearBorn = dateFormat.parse(dateText);
+                Calender yearBo = Calender.getInstance();
+                yearBorn.setTime(p.yearBorn);
+                Calender today = calender.getInstace();
+                today.getTime();
+                if (today.after(yearBo)) {
+                    
+                }
+                
+            }
+            
+        
         }
         
         //age calculator
