@@ -77,7 +77,7 @@ public class nameAndAge {
         
         }
         
-        //age calculator
+        //Calculate age
         calender today = Calender.getInstance;
         today.getTime();
         
