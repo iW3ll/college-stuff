@@ -53,7 +53,7 @@ public class nameAndAge {
             System.out.println("Invalid date!");  
         }
         
-        //verify year born
+        //verify year you were born
         boolean erro = true;
         do {
             System.out.println("Type when you were born: ");
