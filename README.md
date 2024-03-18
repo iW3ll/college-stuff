@@ -1,2 +1,2 @@
-# javaStuff
-Java stuff
+# Java coding
+Java exercises from college
