@@ -2,6 +2,6 @@
 
 ## Languages
 
-• C
-• Java
-• Python
+• C  
+• Java  
+• Python  
