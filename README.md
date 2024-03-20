@@ -1,2 +1,7 @@
-# Java coding
-Java exercises from college
+# College Stuff
+
+## Languages
+
+• C
+• Java
+• Python
