@@ -1,9 +1,0 @@
-def start_end():
-  print("Welcome to the travel from Camaçari to Salvador\n")
-  move = input("How do you want to move?\n 1. car\n 2. moto cycle\n 3. bike\n 4. bus\n: " ))
-  way = input("Wich way do you want to go to Salvador?\n  1. Via parafuso\n 2. Polo\n 3. Simões filho\n 4.Dias d'villa 5.Laura de freitas: "))
-
-  print(f"You get in {way} on {move} Good luck")
-
-if __name__ == "__main__":
-  start_end()
