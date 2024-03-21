@@ -1,6 +1,11 @@
 def start_end():
   print("Welcome to the trip from Camaçari to Salvador\n")
-  moves = {"1": "car", "2": "motorcycle", "3": "bike", "4": "bus"}
+  moves = {
+      "1": "car",
+      "2": "motorcycle",
+      "3": "bike",
+      "4": "bus"
+  }
   ways = {
       "1": "Via Parafuso",
       "2": "Polo",
@@ -10,7 +15,9 @@ def start_end():
   }
 
   while True:
-      move_choice = input("\nHow do you want to move?\n 1. Car\n 2. Motorcycle\n 3. Bike\n 4. Bus\n Enter '0' to exit: ")
+      move_choice = input(
+          "\nHow do you want to move?\n 1. Car\n 2. Motorcycle\n 3. Bike\n 4. Bus\n Enter '0' to exit: "
+      )
 
       if move_choice == "0":
           print("\nExiting...")
@@ -21,7 +28,9 @@ def start_end():
           continue
 
       while True:
-          way_choice = input("\nWhich way do you want to go to Salvador?\n 1. Via Parafuso\n 2. Polo\n 3. Simões Filho\n 4. Dias d'Villa\n 5. Lauro de Freitas\n: ")
+          way_choice = input(
+              "\nWhich way do you want to go to Salvador?\n 1. Via Parafuso\n 2. Polo\n 3. Simões Filho\n 4. Dias d'Villa\n 5. Lauro de Freitas\n: "
+          )
 
           if way_choice not in ways:
               print("Invalid choice. Please select again.")
