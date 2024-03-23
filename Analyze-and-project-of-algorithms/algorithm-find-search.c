@@ -36,21 +36,22 @@ void displayNames(char *names[]) {
 }
 
 int main() {
-    char *names[NUM_NAMES] = {
-        
-        "Maria",
-        "Marcus",
-        "Luana",
-        "Fabio",
-        "Gesssica",
-        "Lucas",
-        "Brenda",
-        "Ronald",
-        "Diule",
-        "Wesley"
-    };
+    char *names[NUM_NAMES];
     char inputName[MAX_NAME_LENGTH];
     int option;
+
+    // Prompt user to add 10 names
+    printf("Please enter 10 names:\n");
+    for (int i = 0; i < NUM_NAMES; ++i) {
+        printf("Enter name %d: ", i + 1);
+        fgets(inputName, MAX_NAME_LENGTH, stdin);
+        // Remove newline character if present
+        if (inputName[strlen(inputName) - 1] == '\n')
+            inputName[strlen(inputName) - 1] = '\0';
+        // Allocate memory for the name and copy it
+        names[i] = malloc(strlen(inputName) + 1);
+        strcpy(names[i], inputName);
+    }
 
     // Sort names in alphabetical order
     qsort(names, NUM_NAMES, sizeof(char *), compareStrings);
@@ -89,6 +90,11 @@ int main() {
                 printf("Invalid option!\n");
         }
     } while (option != 3);
+
+    // Free memory allocated for names
+    for (int i = 0; i < NUM_NAMES; ++i) {
+        free(names[i]);
+    }
 
     return 0;
 }
