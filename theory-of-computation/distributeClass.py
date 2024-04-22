@@ -1,4 +1,4 @@
-# make a program to distribute the class computation theory through the week
+# Make a program to distribute the class Theory of Computation through the week
 
 def distribute_classes(days, days_of_week):
   if days < 1:
@@ -9,7 +9,7 @@ def distribute_classes(days, days_of_week):
  
   for day in days_cycle:
   
-      print(f"\n{day}: Computation Theory - Vespertino")  
+      print(f"\n{day}: Theory of Computation - Afternoon")  
 
 if __name__ == "__main__":
   days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] 
