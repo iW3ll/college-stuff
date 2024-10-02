@@ -1,11 +1,11 @@
-# https://trinket.io/features/pygame
+# This program show two orbs crashing using geometry algorithm
 
 import pygame
 import math
 
 
 WIDTH, HEIGHT = 800, 600
-FPS = 15
+FPS = 15 # change fps will change speed of the orbs
 
 # Define general class
 class Ball:
