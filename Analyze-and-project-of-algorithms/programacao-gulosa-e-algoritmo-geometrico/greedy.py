@@ -1,4 +1,4 @@
-# https://trinket.io/features/pygame
+# This code show greedy algorithm using change as an example 
 
 def greedy_coin_change(coins, amount):
     coins.sort(reverse=True)
