@@ -1,3 +1,10 @@
+'''
+Wesley Luiz
+Trabalho analisador 
+disciplina: Analise e projeto de algoritmo
+Professor: Felipe
+'''
+
 import re
 import time
 import subprocess
