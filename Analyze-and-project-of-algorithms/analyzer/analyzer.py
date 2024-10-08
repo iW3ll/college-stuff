@@ -25,7 +25,7 @@ def get_function_name(line, file_type):
         return match.group(1)
     return None
 
-# verificar decisões locais (possível programação gulosa)
+# verificar decisões locais 
 def check_for_greedy(lines):
     greedy_patterns = [r"max\s*\(", r"min\s*\(", r"if\s*\(.*>", r"if\s*\(.*<"]
     for line in lines:
@@ -34,7 +34,7 @@ def check_for_greedy(lines):
                 return True
     return False
 
-# verificar loops aninhados
+# verificar loops 
 def check_for_nested_loops(lines):
     loop_depth = 0
     max_depth = 0
@@ -51,7 +51,7 @@ def check_for_nested_loops(lines):
 def measure_execution_time(file_path):
     start_time = time.time()
     try:
-        # usar subprocess para executar o arquivo e medir o tempo de execução
+       
         result = subprocess.run(["python3", file_path], capture_output=True, text=True, check=True)
         output = result.stdout
     except subprocess.CalledProcessError as e:
@@ -103,9 +103,9 @@ def analyze_code(file_path, file_type):
 
     # pior caso
     if loop_count > 0:
-        print(f"- Pior caso: O código contém {loop_count} loop(s) de profundidade máxima {nested_loop_depth}. Complexidade O(n^{nested_loop_depth}).")
+        print(f"- Pior caso: O codigo contem {loop_count} loop(s) de profundidade máxima {nested_loop_depth}. Complexidade O(n^{nested_loop_depth}).")
     if recursion_count > 0:
-        print(f"- Pior caso: O código contém {recursion_count} recursão(ões). Complexidade depende da função recursiva (O(T(n))).")
+        print(f"- Pior caso: O código contem {recursion_count} recursão(ões). Complexidade depende da função recursiva (O(T(n))).")
     if is_greedy:
         print("- Algoritmo potencialmente guloso: Baseado em decisões locais detectadas (ex., uso de max, min, etc.).")
     else:
