@@ -8,6 +8,7 @@ Professor: Felipe
 import re
 import time
 import subprocess
+import os
 
 # verificar a presença de loops
 def check_for_loops(line):
@@ -58,15 +59,25 @@ def check_for_nested_loops(lines):
 def measure_execution_time(file_path):
     start_time = time.time()
     try:
-        # usar subprocess para executar o arquivo e medir o tempo de execução
-        result = subprocess.run(["python3", file_path], capture_output=True, text=True, check=True)
+        # timeout no subprocesso para evitar espera indefinida
+        result = subprocess.run(["python", file_path], capture_output=True, text=True, check=True, timeout=10)  # timeout de 10 segundos 
         output = result.stdout
+    except subprocess.TimeoutExpired:
+        print(f"Execução do código excedeu o tempo limite.")
+        output = "Timeout"
     except subprocess.CalledProcessError as e:
         print(f"Erro ao executar o código: {e}")
         output = e.output
     end_time = time.time()
     execution_time = end_time - start_time
     return execution_time, output
+
+
+# adicionar a extensão ao nome do arquivo, se não houver
+def add_extension_if_needed(file_name, file_type):
+    if not file_name.endswith(f".{file_type}"):
+        file_name += f".{file_type}"
+    return file_name
 
 # analisar o código
 def analyze_code(file_path, file_type):
@@ -131,10 +142,12 @@ def analyze_code(file_path, file_type):
     print(f"\nTempo de execução estimado: {exec_time:.5f} segundos")
     print(f"Saída do código:\n{output}")
 
+    # Pausar antes de voltar ao menu
+    input("\nPressione Enter para voltar ao menu...")
 
 if __name__ == "__main__":
     while True:
-        print("\nBem vindo, escolha o tipo de arquivo para analisar: \nColoque o arquivo pra ser analisado na mesma pasta\n")
+        print("\nBem vindo, escolha o tipo de arquivo para analisar: \n")
         print("1. Arquivo .c")
         print("2. Arquivo .py")
         print("3. Arquivo .java")
@@ -143,17 +156,19 @@ if __name__ == "__main__":
         choice = input("\nDigite o número da sua escolha: ")
 
         if choice == '1':
-            file_path = input("Digite o caminho do arquivo .c: ")
-            analyze_code(file_path, 'c')
+            file_name = input("Digite o nome do arquivo .c (sem extensão se preferir): ")
+            file_name = add_extension_if_needed(file_name, 'c')
+            analyze_code(file_name, 'c')
         elif choice == '2':
-            file_path = input("Digite o caminho do arquivo .py: ")
-            analyze_code(file_path, 'py')
+            file_name = input("Digite o nome do arquivo .py (sem extensão se preferir): ")
+            file_name = add_extension_if_needed(file_name, 'py')
+            analyze_code(file_name, 'py')
         elif choice == '3':
-            file_path = input("Digite o caminho do arquivo .java: ")
-            analyze_code(file_path, 'java')
+            file_name = input("Digite o nome do arquivo .java (sem extensão se preferir): ")
+            file_name = add_extension_if_needed(file_name, 'java')
+            analyze_code(file_name, 'java')
         elif choice == '4':
             print("Saindo...")
             break
         else:
             print("Escolha inválida. Tente novamente.")
-
