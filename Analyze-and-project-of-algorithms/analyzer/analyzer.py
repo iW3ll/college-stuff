@@ -125,7 +125,7 @@ def analyze_code(file_path, file_type):
     if recursion_count > 0:
         print(f"- Pior caso: O código contém {recursion_count} recursão(ões). Complexidade depende da função recursiva (O(T(n))).")
     if is_greedy:
-        print("- Algoritmo potencialmente guloso: Baseado em decisões locais detectadas (ex., uso de max, min, etc.).")
+        print("- Algoritmo potencialmente guloso: Baseado em decisões locais detectadas")
     else:
         print("- Nenhum algoritmo guloso detectado.")
 
