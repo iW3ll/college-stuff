@@ -142,7 +142,7 @@ def analyze_code(file_path, file_type):
     print(f"\nTempo de execução estimado: {exec_time:.5f} segundos")
     print(f"Saída do código:\n{output}")
 
-    # Pausar antes de voltar ao menu
+    
     input("\nPressione Enter para voltar ao menu...")
 
 if __name__ == "__main__":
