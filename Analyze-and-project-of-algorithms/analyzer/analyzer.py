@@ -32,7 +32,7 @@ def get_function_name(line, file_type):
         return match.group(1)
     return None
 
-# verificar decisões locais 
+# verificar decisões locais (possível programação gulosa)
 def check_for_greedy(lines):
     greedy_patterns = [r"max\s*\(", r"min\s*\(", r"if\s*\(.*>", r"if\s*\(.*<"]
     for line in lines:
@@ -41,7 +41,7 @@ def check_for_greedy(lines):
                 return True
     return False
 
-# verificar loops 
+# verificar loops aninhados
 def check_for_nested_loops(lines):
     loop_depth = 0
     max_depth = 0
@@ -58,7 +58,7 @@ def check_for_nested_loops(lines):
 def measure_execution_time(file_path):
     start_time = time.time()
     try:
-       
+        # usar subprocess para executar o arquivo e medir o tempo de execução
         result = subprocess.run(["python3", file_path], capture_output=True, text=True, check=True)
         output = result.stdout
     except subprocess.CalledProcessError as e:
@@ -110,11 +110,11 @@ def analyze_code(file_path, file_type):
 
     # pior caso
     if loop_count > 0:
-        print(f"- Pior caso: O codigo contem {loop_count} loop(s) de profundidade máxima {nested_loop_depth}. Complexidade O(n^{nested_loop_depth}).")
+        print(f"- Pior caso: O código contém {loop_count} loop(s) de profundidade máxima {nested_loop_depth}. Complexidade O(n^{nested_loop_depth}).")
     if recursion_count > 0:
-        print(f"- Pior caso: O código contem {recursion_count} recursão(ões). Complexidade depende da função recursiva (O(T(n))).")
+        print(f"- Pior caso: O código contém {recursion_count} recursão(ões). Complexidade depende da função recursiva (O(T(n))).")
     if is_greedy:
-        print("- Algoritmo potencialmente guloso: Baseado em decisões locais detectadas
+        print("- Algoritmo potencialmente guloso: Baseado em decisões locais detectadas (ex., uso de max, min, etc.).")
     else:
         print("- Nenhum algoritmo guloso detectado.")
 
@@ -134,7 +134,7 @@ def analyze_code(file_path, file_type):
 
 if __name__ == "__main__":
     while True:
-        print("\nBem vindo, escolha o tipo de arquivo para analisar:\n")
+        print("\nBem vindo, escolha o tipo de arquivo para analisar: \nColoque o arquivo pra ser analisado na mesma pasta\n")
         print("1. Arquivo .c")
         print("2. Arquivo .py")
         print("3. Arquivo .java")
@@ -156,3 +156,4 @@ if __name__ == "__main__":
             break
         else:
             print("Escolha inválida. Tente novamente.")
+
